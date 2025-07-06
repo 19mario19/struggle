@@ -981,6 +981,11 @@ nav {
             font-size: var(--font-size-body);
         }
 
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
 
         .bottom {
             display: flex;
@@ -1005,9 +1010,15 @@ nav {
                 border: none;
                 margin: 0;
 
+                border: 3px solid transparent;
+
 
                 /* to remove  */
                 /* min-width: 100px; */
+            }
+
+            .winrate {
+                border-color: var(--color-primary-text);
             }
 
             .winCount {

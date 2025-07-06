@@ -1,5 +1,11 @@
 import { DBManager } from "../data/db.js"
-import { quotes, getExperieceTitle, getPowerTitle } from "./quotes.js"
+import {
+  quotes,
+  getExperieceTitle,
+  getPowerTitle,
+  EXPERIENCE,
+  POWERS,
+} from "./quotes.js"
 
 window.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded!")
@@ -241,7 +247,7 @@ function createParents(array, db) {
     loseCount.classList.add("loseCount")
     loseCount.textContent = db.getCountLoses(item.id)
 
-    bottom.append(winrate, winCount, loseCount)
+    bottom.append(winCount, winrate, loseCount)
 
     // bottom.append(deleteElement)
 
@@ -251,12 +257,15 @@ function createParents(array, db) {
 
     const experiece = db.getExperience(item.id)
 
-    const cleanExperiece = experiece - (experiece % 10)
+    const cleanExperiece = experiece - (experiece % 10) // function get to closest
 
     const itemRank = Number(db.getWinrate(item.id).split("%")[0])
     const cleanRank = itemRank - (itemRank % 10)
 
-    const itemQuotesArray = quotes[cleanRank][cleanExperiece] || []
+    const itemQuotesArray =
+      quotes[POWERS[getPowerTitle(itemRank)]][
+        EXPERIENCE[getExperieceTitle(experiece)]
+      ] || []
     // console.log(itemQuotesArray)
     const len = itemQuotesArray?.length ?? 0
 
@@ -264,12 +273,20 @@ function createParents(array, db) {
 
     // console.log(itemQuotesArray[random])
 
-    console.log(item.id)
-    console.log("experience: ", getExperieceTitle(cleanExperiece))
-    console.log("power :", getPowerTitle(cleanRank))
-    console.log("\n")
-
     quote.textContent = itemQuotesArray[random]
+    // ranking
+
+    const wrapper = document.createElement("section")
+    wrapper.classList.add("wrapper")
+    li.append(wrapper)
+
+    const exp = document.createElement("h3")
+    exp.textContent = getExperieceTitle(experiece) || "error"
+
+    const rank = document.createElement("h3")
+    rank.textContent = getPowerTitle(itemRank) || "error"
+
+    wrapper.append(exp, rank)
 
     li.append(quote)
 

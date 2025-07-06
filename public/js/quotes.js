@@ -773,17 +773,40 @@ for (let exp in EXPERIENCE) {
   ]
 }
 
+// console.log(quotes)
+
 function getExperieceTitle(number) {
   let keys = Object.keys(EXPERIENCE)
-  for (let key of keys) {
-    if (EXPERIENCE[key] === number) return key
+
+  for (let index = keys.length - 1; index >= 0; index--) {
+    const key = keys[index]
+
+    if (number >= EXPERIENCE[key]) {
+      return key
+    }
+    if (number < EXPERIENCE[key]) {
+      continue
+    }
   }
 }
 function getPowerTitle(number) {
-  let keys = Object.keys(POWERS)
-  for (let key of keys) {
-    if (POWERS[key] === number) return key
+  let keys = Object.keys(POWERS).reverse()
+
+  for (let index = keys.length - 1; index >= 0; index--) {
+    const key = keys[index]
+
+    if (number >= POWERS[key]) {
+      return key
+    }
+    if (number < POWERS[key]) {
+      continue
+    }
   }
 }
 
-export { quotes, getExperieceTitle, getPowerTitle }
+// console.log(getExperieceTitle(200))
+console.log(
+  quotes[POWERS[getPowerTitle(1000)]][EXPERIENCE[getExperieceTitle(100)]],
+)
+
+export { quotes, getExperieceTitle, getPowerTitle, EXPERIENCE, POWERS }
