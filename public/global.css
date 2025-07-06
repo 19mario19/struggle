@@ -34,8 +34,8 @@ dd {
 }
 
 /* Remove list styles on ul, ol that have a class attribute (so you can explicitly add them if needed) */
-ul[class],
-ol[class] {
+ul,
+ol {
     list-style: none;
 }
 
@@ -177,6 +177,145 @@ select {
     /* For headings and potentially UI elements */
     --font-family-body: "IBM Plex Sans", sans-serif;
     /* For paragraphs and longer text blocks */
+}
+
+:root {
+    --color-primary-background: #0f172a;
+    --color-primary-text: #f1f5f9;
+
+    --color-accent-primary: #14b8a6;
+    --color-accent-secondary: #0ea5e9;
+
+    --color-neutral-dark: #1e293b;
+    --color-neutral-medium: #64748b;
+    --color-neutral-light: #cbd5e1;
+
+    --color-success: #22c55e;
+    --color-error: #f87171;
+    --color-warning: #fbbf24;
+
+    --space-xxs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 50%;
+
+    --z-base: 1;
+    --z-dropdown: 10;
+    --z-sticky: 100;
+    --z-overlay: 1000;
+    --z-modal: 2000;
+
+    --font-size-base: 1rem;
+    --font-size-xs: clamp(0.75rem, 0.5rem + 1vw, 1rem);
+    --font-size-sm: clamp(0.875rem, 0.75rem + 1vw, 1.125rem);
+    --font-size-body: clamp(1rem, 0.9rem + 1vw, 1.25rem);
+    --font-size-lg: clamp(1.25rem, 1.1rem + 1.5vw, 1.5rem);
+    --font-size-xl: clamp(1.5rem, 1.3rem + 2vw, 2rem);
+    --font-size-xxl: clamp(2rem, 1.7rem + 3vw, 2.75rem);
+    --font-size-xxxl: clamp(2.5rem, 2rem + 4vw, 3.5rem);
+
+    --line-height-heading: 1.2;
+    --line-height-body: 1.6;
+
+    --font-family-heading: "Libre Baskerville", serif;
+    --font-family-body: "IBM Plex Sans", sans-serif;
+}
+
+:root {
+    --color-primary-background: #1e1e1e;
+    /* dark ash background */
+    --color-primary-text: #e4d9c0;
+    /* bone text */
+
+    --color-accent-primary: #b0302a;
+    /* raw red - emotional primary */
+    --color-accent-secondary: #d94e00;
+    /* flame accent */
+
+    --color-neutral-dark: #4a4a48;
+    /* ash grey */
+    --color-neutral-medium: #7f2a24;
+    /* weathered heart */
+    --color-neutral-light: #e4d9c0;
+    /* bone again for light bg/text */
+
+    --color-success: #22c55e;
+    /* keep success as-is */
+    --color-error: #b0302a;
+    /* same as accent primary - moral red */
+    --color-warning: #fbbf24;
+    /* keep for caution */
+
+    --space-xxs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 50%;
+
+    --z-base: 1;
+    --z-dropdown: 10;
+    --z-sticky: 100;
+    --z-overlay: 1000;
+    --z-modal: 2000;
+
+    --font-size-base: 1rem;
+    --font-size-xs: clamp(0.75rem, 0.5rem + 1vw, 1rem);
+    --font-size-sm: clamp(0.875rem, 0.75rem + 1vw, 1.125rem);
+    --font-size-body: clamp(1rem, 0.9rem + 1vw, 1.25rem);
+    --font-size-lg: clamp(1.25rem, 1.1rem + 1.5vw, 1.5rem);
+    --font-size-xl: clamp(1.5rem, 1.3rem + 2vw, 2rem);
+    --font-size-xxl: clamp(2rem, 1.7rem + 3vw, 2.75rem);
+    --font-size-xxxl: clamp(2.5rem, 2rem + 4vw, 3.5rem);
+
+    --line-height-heading: 1.2;
+    --line-height-body: 1.6;
+
+    --font-family-heading: "Libre Baskerville", serif;
+    --font-family-body: "IBM Plex Sans", sans-serif;
+}
+
+:root {
+    /* Background & Text */
+    --color-primary-background: #121212;
+    /* Deep black for mystery & focus */
+    --color-primary-text: #e4d9c0;
+    /* Bone tone—soft, aged, human */
+
+    /* Core Accents */
+    --color-accent-primary: #b0302a;
+    /* Desire red—passionate & danger */
+    --color-accent-secondary: #d94e00;
+    /* Flame orange—impulse & action */
+
+    /* Neutral & Texture */
+    --color-neutral-dark: #2a2a28;
+    /* Dark ash—depth and contrast */
+    --color-neutral-medium: #7f2a24;
+    /* Rusty red—weathered emotional wounds */
+    --color-neutral-light: #cbd5b9;
+    /* Pale bone—memory and relief */
+
+    /* Feedback */
+    --color-success: #0e6e31;
+    /* Standard success - keep */
+    --color-error: #b0302a;
+    /* Use primary red for moral error */
+    --color-warning: #fbbf24;
 }
 
 /* Light Theme Overrides */
@@ -678,6 +817,10 @@ main {
     }
 }
 
+.padding-md {
+    padding: var(--space-md);
+}
+
 /* --- 7. Utility Classes --- */
 /* Layout & Spacing */
 .container {
@@ -686,56 +829,261 @@ main {
     padding: var(--space-md);
 }
 
-/* Flexbox utilities */
-.flex {
-    display: flex;
+nav {
+    ul {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: space-around;
+
+    }
 }
 
-.flex-center {
+
+
+#title {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+
+    #win,
+    #lose {
+        height: 100px;
+        aspect-ratio: 1;
+        margin: var(--space-lg);
+        padding: var(--space-lg);
+        border-radius: var(--radius-full);
+        border: 5px solid var(--color-neutral-light);
+
+        transition: opaticty .35s ease, transform .15s ease;
+
+        &:hover {
+            opacity: .95;
+            transform: scale(.9);
+        }
+    }
+
+    #win {
+        background-color: var(--color-success);
+        color: var(--color-primary-text);
+    }
+
+    #lose {
+        background-color: var(--color-error);
+
+    }
+}
+
+.list {
+
+    /* padding: var(--space-lg) var(--space-xxs); */
+
+    .message {
+        padding: var(--space-md) 0;
+        margin: 0;
+        margin-bottom: var(--space-lg);
+    }
+
+    ul {
+        display: flex;
+        gap: var(--space-sm);
+        padding: var(--space-sm) 0;
+        flex-direction: column;
+    }
+
+    li.win {
+        background-color: var(--color-success);
+    }
+
+    li.lose {
+        background-color: var(--color-error);
+    }
+
+
+    li {
+
+        display: flex;
+        flex-direction: column;
+        /* align-items: center;
+        justify-content: center; */
+
+        background-color: var(--color-neutral-dark);
+        padding: var(--space-lg) var(--space-md);
+        /* margin: var(--space-md); */
+
+        border-radius: var(--radius-md);
+        border: 2px solid var(--color-neutral-light);
+
+        .top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            padding: 0;
+            margin: 0;
+
+            gap: var(--space-md);
+
+
+            h2 {
+                text-align: start;
+                padding: 0;
+                margin: 0;
+                /* margin-bottom: var(--space-sm); */
+                align-self: flex-end;
+                justify-self: end;
+                line-height: calc(var(--font-size-lg) +1rem);
+            }
+
+            p {
+                font-size: var(--font-size-body);
+                padding: 0;
+                margin: 0;
+            }
+
+            a {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+        }
+
+
+
+        h4 {
+            margin: 0;
+            margin-bottom: var(--space-sm);
+            font-weight: bold;
+
+        }
+
+        h4,
+        p {
+            padding: var(--space-xxs);
+        }
+
+        gap: var(--space-sm);
+
+        .quote {
+            padding: var(--space-md);
+            font-style: italic;
+            color: var(--color-accent-primary);
+            background-color: var(--color-primary-background);
+            border-left: 4px solid var(--color-accent-primary);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-size-body);
+        }
+
+
+        .bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: stretch;
+            gap: 1rem;
+            align-items: center;
+            background-color: var(--color-primary-background);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            border: 2px solid var(--color-neutral-light);
+
+            .winrate,
+            .winCount,
+            .loseCount {
+                flex: 1;
+                background-color: var(--color-accent-secondary);
+                padding: var(--space-md);
+                border-radius: var(--radius-md);
+                font-size: var(--font-size-sm);
+                font-weight: bold;
+                border: none;
+                margin: 0;
+
+
+                /* to remove  */
+                /* min-width: 100px; */
+            }
+
+            .winCount {
+                background-color: var(--color-success);
+            }
+
+            .loseCount {
+                background-color: var(--color-error);
+            }
+
+
+            button {
+                padding: var(--space-md);
+                background-color: var(--color-error);
+                color: var(--color-primary-text);
+                font-size: var(--font-size-xs);
+                text-transform: uppercase;
+                /* margin: 0; */
+            }
+        }
+
+    }
+
+}
+
+ul.individual {
+
+    li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: var(--space-sm) var(--space-lg);
+
+        align-items: center;
+
+        p {
+            margin: 0;
+        }
+
+        .state {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: var(--f);
+
+        }
+
+        .created-at {
+            .date {}
+
+            .time {
+                font-weight: bold;
+                font-size: var(--font-size-lg);
+            }
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    border-radius: var(--radius-md);
+
+    input,
+    textarea {
+        padding: var(--space-md);
+        border-radius: var(--radius-md);
+    }
+
+    button:hover {
+        opacity: .95;
+    }
+}
+
+footer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.flex-column {
-    flex-direction: column;
-}
-
-.gap-sm {
-    gap: var(--space-sm);
-}
-
-.gap-md {
-    gap: var(--space-md);
-}
-
-.gap-lg {
-    gap: var(--space-lg);
-}
-
-/* Text Alignment */
-.text-left {
-    text-align: left;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-right {
-    text-align: right;
-}
-
-/* Visibility & Accessibility */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-

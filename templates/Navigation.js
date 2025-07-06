@@ -1,9 +1,19 @@
+import { routes } from "../routes/routes.js"
+
 function Navigation() {
+  const elements = routes
+    ?.map((el) => {
+      return /*html*/ `
+    <li><a href="${el.path}">${el.name}</a></li>
+  
+    `
+    })
+    .join("")
+
   return /*html*/ `
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/api/health">Health</a></li>
+<nav class="main-header">
+    <ul class="parents">
+    ${elements}
     </ul>
 </nav>`
 }
