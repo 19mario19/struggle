@@ -43,7 +43,7 @@ function DBManager(init) {
 
       let element = data.find((el) => el.id === id)
 
-      if(!element) throw new Error(`Could not find the element with id: ${id}`)
+      if (!element) throw new Error(`Could not find the element with id: ${id}`)
       return element
 
       // for (let item in data) {
@@ -160,9 +160,9 @@ function DBManager(init) {
         const wins = element?.history?.filter((el) => el.state === "win").length
         const len = element?.history.length
 
-        winrate = ((wins * 100) / len).toFixed(2) + " %"
+        winrate = ((wins * 100) / len).toFixed(2)
       } else {
-        winrate = 0 + " %"
+        winrate = 0
       }
 
       return winrate

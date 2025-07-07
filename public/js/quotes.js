@@ -1,14 +1,14 @@
 const POWERS = {
-  SUPERIOR: 90,
-  STRONG: 80,
-  SOLID: 70,
-  DECENT: 60,
-  AVERAGE: 50,
-  WEAK: 40,
-  FRAGILE: 30,
-  TINY: 20,
-  MINIMAL: 10,
   COLLAPSED: 0,
+  MINIMAL: 10,
+  TINY: 20,
+  FRAGILE: 30,
+  WEAK: 40,
+  AVERAGE: 50,
+  DECENT: 60,
+  SOLID: 70,
+  STRONG: 80,
+  SUPERIOR: 90,
 }
 
 const EXPERIENCE = {
@@ -790,7 +790,7 @@ function getExperieceTitle(number) {
   }
 }
 function getPowerTitle(number) {
-  let keys = Object.keys(POWERS).reverse()
+  let keys = Object.keys(POWERS)
 
   for (let index = keys.length - 1; index >= 0; index--) {
     const key = keys[index]
@@ -805,8 +805,8 @@ function getPowerTitle(number) {
 }
 
 // console.log(getExperieceTitle(200))
-console.log(
-  quotes[POWERS[getPowerTitle(1000)]][EXPERIENCE[getExperieceTitle(100)]],
-)
+// console.log(
+//   quotes[POWERS[getPowerTitle(1000)]][EXPERIENCE[getExperieceTitle(100)]],
+// )
 
 export { quotes, getExperieceTitle, getPowerTitle, EXPERIENCE, POWERS }
