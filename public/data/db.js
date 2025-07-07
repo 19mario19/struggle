@@ -188,6 +188,25 @@ function DBManager(init) {
 
       return element.history.length
     },
+    getCurrentSteak: (id) => {
+      const element = data?.find((el) => el.id === id)
+
+      const lastState = element.history[0].state // first is last
+
+      let count = 0
+      for (let index = 0; index <= element.history.length; index++) {
+        let item = element.history[index]
+        if (item.state === lastState) {
+          count++
+        } else {
+          break
+        }
+      }
+
+      let result = { state: lastState, count }
+
+      return result
+    },
   }
 }
 

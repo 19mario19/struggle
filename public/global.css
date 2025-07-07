@@ -915,7 +915,8 @@ nav {
         justify-content: center; */
 
         max-width: 400px;
-        margin: 0 auto;
+        /* min-width: 400px; */
+        /* margin: 0 auto; */
 
 
         background-color: var(--color-neutral-dark);
@@ -1010,6 +1011,57 @@ nav {
         .wrapper {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            align-items: center;
+
+            padding: var(--space-md);
+            background-color: var(--color-primary-background);
+            border-radius: var(--radius-sm);
+
+            border: 2px solid var(--color-primary-text);
+
+
+            h3 {
+
+                margin: 0;
+                padding: 0;
+            }
+
+            h3.streak {
+                font-size: var(--font-size-lg);
+                margin-left: var(--space-lg);
+            }
+
+            .streak,
+            .exp,
+            .rank {
+                padding: var(--space-xxs);
+                border-radius: var(--radius-sm);
+                font-size: var(--font-size-xs);
+            }
+
+            .streak.win {
+                background-color: var(--color-success);
+            }
+
+            .streak.lose {
+                background-color: var(--color-error);
+            }
+
+
+            .exp {
+                background-color: var(--color-accent-primary);
+
+
+
+            }
+
+            .rank {
+                background-color: var(--color-neutral-medium);
+
+
+            }
         }
 
 

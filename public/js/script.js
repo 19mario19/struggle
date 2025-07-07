@@ -241,17 +241,17 @@ function createParents(array, db) {
     // const winrate = document.createElement("h3")
     // winrate.classList.add("winrate")
     let winrate = db.getWinrate(item.id)
-    console.log(winrate)
+    // console.log(winrate)
     // count
     const winCount = document.createElement("h3")
     winCount.classList.add("winCount")
     winCount.classList.add(winrate)
-    winCount.style.flex = winrate
+    winCount.style.flex = winrate === 0 ? 1 : winrate
     winCount.textContent = db.getCountWins(item.id)
 
     const loseCount = document.createElement("h3")
     loseCount.classList.add("loseCount")
-    loseCount.style.flex = 100 - winrate
+    loseCount.style.flex = winrate === 0 ? 1 : 100 - winrate
     loseCount.textContent = db.getCountLoses(item.id)
 
     bottom.append(winCount, loseCount)
@@ -286,12 +286,21 @@ function createParents(array, db) {
     li.append(wrapper)
 
     const exp = document.createElement("h3")
+    exp.classList.add("exp")
     exp.textContent = getExperieceTitle(experiece) || "error"
 
     const rank = document.createElement("h3")
+    rank.classList.add("rank")
     rank.textContent = getPowerTitle(itemRank) || "error"
 
-    wrapper.append(exp, rank)
+    // streak
+    const { state, count } = db.getCurrentSteak(item.id)
+
+    const streakCount = document.createElement("h3")
+    streakCount.classList.add(state, "streak")
+    streakCount.textContent = "x"+count
+
+    wrapper.append(exp, rank, streakCount)
 
     li.append(quote)
 
