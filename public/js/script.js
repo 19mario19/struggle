@@ -238,7 +238,7 @@ function createParents(array, db) {
     bottom.classList.add("bottom")
     li.append(bottom)
 
-    // const winrate = document.createElement("h3")
+    // const winrate = document.createElement("p")
     // winrate.classList.add("winrate")
     let winrate = db.getWinrate(item.id)
     // console.log(winrate)
@@ -258,14 +258,81 @@ function createParents(array, db) {
     // bottom.append(winCount, winrate, loseCount)
 
     // bottom.append(deleteElement)
+    const experiece = db.getExperience(item.id)
+    const itemRank = Number(db.getWinrate(item.id))
+
+    // ranking
+    const wrapper = document.createElement("section")
+    wrapper.classList.add("wrapper")
+
+    // power - winrate
+    const powerWrap = document.createElement("div")
+    wrapper.append(powerWrap)
+    powerWrap.classList.add("wrap", "power")
+
+    const powerTop = document.createElement("div")
+    powerTop.classList.add("top")
+    powerWrap.append(powerTop)
+
+    const powerTitle = document.createElement("p")
+    powerTitle.textContent = "Power"
+
+    const powerRank = document.createElement("p")
+    powerRank.textContent = getPowerTitle(itemRank)
+
+    powerTop.append(powerTitle, powerRank)
+
+    const powerBot = document.createElement("div")
+    powerBot.classList.add("bot")
+    powerWrap.append(powerBot)
+
+    const stars = (winrate - (winrate % 10)) / 10
+
+    for (let i = 0; i < stars; i++) {
+      const powerImg = document.createElement("img")
+      powerImg.src = "/media/star.svg"
+      powerBot.append(powerImg)
+    }
+
+    // experience - tries
+
+    const expWrap = document.createElement("div")
+    wrapper.append(expWrap)
+    expWrap.classList.add("wrap", "exp")
+
+    const expTop = document.createElement("div")
+    expTop.classList.add("top")
+    expWrap.append(expTop)
+
+    const expTitle = document.createElement("p")
+    expTitle.textContent = "Experience"
+
+    const expRank = document.createElement("p")
+    expRank.textContent = getExperieceTitle(experiece)
+
+    expTop.append(expTitle, expRank)
+
+    const expBot = document.createElement("div")
+    expBot.classList.add("bot")
+    expWrap.append(expBot)
+
+    const expArray = Object.keys(EXPERIENCE)
+
+    console.log(expArray.indexOf(getExperieceTitle(experiece)))
+
+    const stars2 = expArray.indexOf(getExperieceTitle(experiece))
+
+    for (let i = 0; i < stars2; i++) {
+      const expImg = document.createElement("img")
+      expImg.src = "/media/star.svg"
+      expBot.append(expImg)
+    }
+
+    li.append(wrapper)
 
     // quote
     const quote = document.createElement("p")
     quote.classList.add("quote")
-
-    const experiece = db.getExperience(item.id)
-
-    const itemRank = Number(db.getWinrate(item.id))
 
     const itemQuotesArray =
       quotes[POWERS[getPowerTitle(itemRank)]][
@@ -279,28 +346,6 @@ function createParents(array, db) {
     // console.log(itemQuotesArray[random])
 
     quote.textContent = itemQuotesArray[random]
-    // ranking
-
-    const wrapper = document.createElement("section")
-    wrapper.classList.add("wrapper")
-    li.append(wrapper)
-
-    const exp = document.createElement("h3")
-    exp.classList.add("exp")
-    exp.textContent = getExperieceTitle(experiece) || "error"
-
-    const rank = document.createElement("h3")
-    rank.classList.add("rank")
-    rank.textContent = getPowerTitle(itemRank) || "error"
-
-    // streak
-    const { state, count } = db.getCurrentSteak(item.id)
-
-    const streakCount = document.createElement("h3")
-    streakCount.classList.add(state, "streak")
-    streakCount.textContent = "x"+count
-
-    wrapper.append(exp, rank, streakCount)
 
     li.append(quote)
 

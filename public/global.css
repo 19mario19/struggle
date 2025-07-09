@@ -88,172 +88,8 @@ select {
 
 /* --- 2. Color Palette & Theming Variables --- */
 
-/* Default (Dark) Theme Variables */
-:root {
-    /* Primary Colors */
-    --color-primary-background: #12122b;
-    /* Original Dark Blue */
-    --color-primary-text: #f0f0f0;
-    /* Brighter light grey for general text */
-
-    /* Accent Colors */
-    --color-accent-primary: #33ffff;
-    /* Slightly lighter cyan for better legibility on small text */
-    /* Contrast: #33FFFF on #12122B has a contrast ratio of ~6.0:1 (Passes AA comfortably, closer to AAA) */
-    --color-accent-secondary: #00bfbf;
-    /* Muted teal for secondary accents */
-
-    /* Neutral Colors */
-    --color-neutral-dark: #3a3a57;
-    /* Slightly lighter than original dark neutral for better contrast with primary text on light mode, or for secondary dark backgrounds */
-    /* On --color-primary-background (#12122B), #3A3A57 would be low contrast for text. It's meant to be a darker neutral for backgrounds or borders. */
-    /* Text on --color-neutral-dark (#3A3A57): Use --color-primary-text (#F0F0F0) - Contrast: ~5.3:1 (Passes AA) */
-
-    --color-neutral-medium: #a0a0b5;
-    /* Brighter medium neutral, good for subtle text or borders */
-    /* On --color-primary-background (#12122B), #A0A0B5 has a contrast ratio of ~3.3:1 (Fails AA for normal text). This might be suitable for very large, non-essential text or borders. */
-    /* Text on --color-neutral-medium (#A0A0B5): Use a darker color, e.g., #12122B - Contrast: ~3.3:1 (Fails AA). So, use a much darker color like #000000 (black) or #1A1A1A (dark grey) - Contrast: ~11.8:1 (Passes AAA) */
-
-    --color-neutral-light: #d0d0e0;
-    /* Even brighter light neutral, for borders, dividers, or very subtle backgrounds */
-    /* On --color-primary-background (#12122B), #D0D0E0 has a contrast ratio of ~6.8:1 (Passes AA for normal text) */
-    /* Text on --color-neutral-light (#D0D0E0): Use a darker color, e.g., #12122B - Contrast: ~6.8:1 (Passes AA) */
-
-    /* Semantic State Colors (Basic examples) */
-    --color-success: #3cb371;
-    /* A more vibrant green with good contrast */
-    /* Contrast on #12122B: ~4.6:1 (Passes AA) */
-    --color-error: #ff6347;
-    /* A strong, clear red-orange */
-    /* Contrast on #12122B: ~4.7:1 (Passes AA) */
-    --color-warning: #ffd700;
-    /* A brighter, more distinct yellow */
-    /* Contrast on #12122B: ~4.5:1 (Passes AA) */
-    /* --- Spacing & Sizing Variables --- */
-
-    --space-xxs: 0.25rem;
-    --space-xs: 0.5rem;
-    --space-sm: 0.75rem;
-    --space-md: 1rem;
-    /* Base spacing unit */
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
-    --space-xxl: 3rem;
-
-    /* Border Radii */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-full: 50%;
-    /* For circles */
-
-    /* Z-index layers (Example) */
-    --z-base: 1;
-    --z-dropdown: 10;
-    --z-sticky: 100;
-    --z-overlay: 1000;
-    --z-modal: 2000;
-
-    /* --- Typography Variables & Fluid Sizing --- */
-    /* Base font size relative to user's browser setting (16px default in most browsers) */
-    --font-size-base: 1rem;
-
-    /* Fluid typography scale using clamp() for responsive font sizes */
-    --font-size-xs: clamp(0.75rem, 0.5rem + 1vw, 1rem);
-    --font-size-sm: clamp(0.875rem, 0.75rem + 1vw, 1.125rem);
-    --font-size-body: clamp(1rem, 0.9rem + 1vw, 1.25rem);
-    --font-size-lg: clamp(1.25rem, 1.1rem + 1.5vw, 1.5rem);
-    --font-size-xl: clamp(1.5rem, 1.3rem + 2vw, 2rem);
-    --font-size-xxl: clamp(2rem, 1.7rem + 3vw, 2.75rem);
-    --font-size-xxxl: clamp(2.5rem, 2rem + 4vw, 3.5rem);
-
-    /* Line Heights */
-    --line-height-heading: 1.2;
-    --line-height-body: 1.6;
-    /* Optimal for readability */
-
-    /* Font Families */
-    --font-family-heading: "Libre Baskerville", serif;
-    /* For headings and potentially UI elements */
-    --font-family-body: "IBM Plex Sans", sans-serif;
-    /* For paragraphs and longer text blocks */
-}
 
 :root {
-    --color-primary-background: #0f172a;
-    --color-primary-text: #f1f5f9;
-
-    --color-accent-primary: #14b8a6;
-    --color-accent-secondary: #0ea5e9;
-
-    --color-neutral-dark: #1e293b;
-    --color-neutral-medium: #64748b;
-    --color-neutral-light: #cbd5e1;
-
-    --color-success: #22c55e;
-    --color-error: #f87171;
-    --color-warning: #fbbf24;
-
-    --space-xxs: 0.25rem;
-    --space-xs: 0.5rem;
-    --space-sm: 0.75rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
-    --space-xxl: 3rem;
-
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-full: 50%;
-
-    --z-base: 1;
-    --z-dropdown: 10;
-    --z-sticky: 100;
-    --z-overlay: 1000;
-    --z-modal: 2000;
-
-    --font-size-base: 1rem;
-    --font-size-xs: clamp(0.75rem, 0.5rem + 1vw, 1rem);
-    --font-size-sm: clamp(0.875rem, 0.75rem + 1vw, 1.125rem);
-    --font-size-body: clamp(1rem, 0.9rem + 1vw, 1.25rem);
-    --font-size-lg: clamp(1.25rem, 1.1rem + 1.5vw, 1.5rem);
-    --font-size-xl: clamp(1.5rem, 1.3rem + 2vw, 2rem);
-    --font-size-xxl: clamp(2rem, 1.7rem + 3vw, 2.75rem);
-    --font-size-xxxl: clamp(2.5rem, 2rem + 4vw, 3.5rem);
-
-    --line-height-heading: 1.2;
-    --line-height-body: 1.6;
-
-    --font-family-heading: "Libre Baskerville", serif;
-    --font-family-body: "IBM Plex Sans", sans-serif;
-}
-
-:root {
-    --color-primary-background: #1e1e1e;
-    /* dark ash background */
-    --color-primary-text: #e4d9c0;
-    /* bone text */
-
-    --color-accent-primary: #b0302a;
-    /* raw red - emotional primary */
-    --color-accent-secondary: #d94e00;
-    /* flame accent */
-
-    --color-neutral-dark: #4a4a48;
-    /* ash grey */
-    --color-neutral-medium: #7f2a24;
-    /* weathered heart */
-    --color-neutral-light: #e4d9c0;
-    /* bone again for light bg/text */
-
-    --color-success: #22c55e;
-    /* keep success as-is */
-    --color-error: #b0302a;
-    /* same as accent primary - moral red */
-    --color-warning: #fbbf24;
-    /* keep for caution */
-
     --space-xxs: 0.25rem;
     --space-xs: 0.5rem;
     --space-sm: 0.75rem;
@@ -311,7 +147,7 @@ select {
     /* Pale bone—memory and relief */
 
     /* Feedback */
-    --color-success: #0e6e31;
+    --color-success: #67B12B;
     /* Standard success - keep */
     --color-error: #b0302a;
     /* Use primary red for moral error */
@@ -1010,10 +846,9 @@ nav {
 
         .wrapper {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             flex-wrap: wrap;
             gap: var(--space-sm);
-            align-items: center;
 
             padding: var(--space-md);
             background-color: var(--color-primary-background);
@@ -1021,6 +856,24 @@ nav {
 
             border: 2px solid var(--color-primary-text);
 
+            .wrap {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-sm);
+
+
+                .top {
+                    display: flex;
+                    font-size: var(--font-size-sm);
+                }
+
+
+                .bot {
+                    display: flex;
+                    gap: var(--space-sm);
+                }
+
+            }
 
             h3 {
 
@@ -1028,40 +881,7 @@ nav {
                 padding: 0;
             }
 
-            h3.streak {
-                font-size: var(--font-size-lg);
-                margin-left: var(--space-lg);
-            }
 
-            .streak,
-            .exp,
-            .rank {
-                padding: var(--space-xxs);
-                border-radius: var(--radius-sm);
-                font-size: var(--font-size-xs);
-            }
-
-            .streak.win {
-                background-color: var(--color-success);
-            }
-
-            .streak.lose {
-                background-color: var(--color-error);
-            }
-
-
-            .exp {
-                background-color: var(--color-accent-primary);
-
-
-
-            }
-
-            .rank {
-                background-color: var(--color-neutral-medium);
-
-
-            }
         }
 
 
@@ -1083,7 +903,7 @@ nav {
                 background-color: var(--color-accent-secondary);
                 padding: var(--space-md);
                 border-radius: var(--radius-md);
-                font-size: var(--font-size-sm);
+                font-size: var(--font-size-md);
                 font-weight: bold;
                 border: none;
                 margin: 0;
@@ -1101,6 +921,8 @@ nav {
 
             .winCount {
                 background-color: var(--color-success);
+                color: var(--color-primary-background);
+
             }
 
             .loseCount {
