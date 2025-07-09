@@ -275,7 +275,7 @@ function createParents(array, db) {
     powerWrap.append(powerTop)
 
     const powerTitle = document.createElement("p")
-    powerTitle.textContent = "Power"
+    powerTitle.textContent = "Power (winrate)"
 
     const powerRank = document.createElement("p")
     powerRank.textContent = getPowerTitle(itemRank)
@@ -305,7 +305,7 @@ function createParents(array, db) {
     expWrap.append(expTop)
 
     const expTitle = document.createElement("p")
-    expTitle.textContent = "Experience"
+    expTitle.textContent = "Experience (tries)"
 
     const expRank = document.createElement("p")
     expRank.textContent = getExperieceTitle(experiece)
@@ -324,7 +324,7 @@ function createParents(array, db) {
 
     for (let i = 0; i < stars2; i++) {
       const expImg = document.createElement("img")
-      expImg.src = "/media/star.svg"
+      expImg.src = "/media/energy.svg"
       expBot.append(expImg)
     }
 
