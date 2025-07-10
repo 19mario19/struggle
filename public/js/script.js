@@ -178,6 +178,8 @@ window.addEventListener("DOMContentLoaded", () => {
       li.addEventListener("click", () => {
         name.value = item.name
         description.value = item.description
+
+        window.scrollTo({ top: 0, behavior: "smooth" })
       })
     }
   }
