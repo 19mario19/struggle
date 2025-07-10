@@ -19,7 +19,6 @@ const EXPERIENCE = {
   DEVELOPING: 60,
   INTERMEDIATE: 80,
   COMPETENT: 100,
-  PROFICIENT: 130,
   ADVANCED: 160,
   EXPERT: 200,
   MASTER: 300,
@@ -93,13 +92,6 @@ quotes[POWERS.SUPERIOR][EXPERIENCE.COMPETENT] = [
   "You are a benchmark of superior competence. Continue to lead with excellence.",
 ]
 
-quotes[POWERS.SUPERIOR][EXPERIENCE.PROFICIENT] = [
-  "Your proficiency is truly superior. You're executing with exceptional skill and insight.",
-  "You're not just proficient; you're setting a superior standard for performance.",
-  "This profound proficiency demonstrates your superior dedication and powerful results.",
-  "Your success lights the way for others as a superior example. Keep shining!",
-  "You've proven that consistent, proficient effort leads to superior triumphs.",
-]
 
 quotes[POWERS.SUPERIOR][EXPERIENCE.ADVANCED] = [
   "You're operating at an advanced, superior level. Simply unparalleled in your domain.",
@@ -175,13 +167,7 @@ quotes[POWERS.STRONG][EXPERIENCE.COMPETENT] = [
   "You demonstrate strong command and confidence. That's what competence looks like.",
   "Leverage your strong competence to take on even bigger challenges.",
 ]
-quotes[POWERS.STRONG][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, your strength in this area is undeniable.",
-  "You're executing with strong impact and consistent quality. Proficient and powerful!",
-  "Your strong proficiency means you can tackle almost anything. Keep refining.",
-  "This is what strong, consistent effort looks like at a proficient level.",
-  "Your strong, proficient actions are making a profound difference.",
-]
+
 quotes[POWERS.STRONG][EXPERIENCE.ADVANCED] = [
   "Your advanced skill is matched by unwavering strength. Truly impressive.",
   "You're operating at an advanced level with remarkable strength and control.",
@@ -254,13 +240,7 @@ quotes[POWERS.SOLID][EXPERIENCE.COMPETENT] = [
   "You embody solid reliability. Your consistent effort makes you truly competent.",
   "This is the hallmark of a competent individual: solid and consistent results.",
 ]
-quotes[POWERS.SOLID][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, your solid understanding makes you incredibly effective.",
-  "You're demonstrating solid expertise and reliable performance. Profoundly proficient.",
-  "Your proficiency means your actions are always solid and impactful.",
-  "This level of solid execution is truly proficient. Keep refining that consistency.",
-  "You are a model of solid, proficient work. Well done!",
-]
+
 quotes[POWERS.SOLID][EXPERIENCE.ADVANCED] = [
   "Your advanced skills are built on a solid foundation. You're truly formidable.",
   "You navigate challenges with advanced insight and solid, unwavering resolve.",
@@ -333,13 +313,7 @@ quotes[POWERS.DECENT][EXPERIENCE.COMPETENT] = [
   "You're maintaining a decent level of competence. How can you elevate it further?",
   "Your competent work, even when decent, contributes to your overall success.",
 ]
-quotes[POWERS.DECENT][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, even a decent day means you're still ahead of many.",
-  "Your proficiency ensures that even your 'decent' efforts are high quality.",
-  "A temporary dip to decent doesn't negate your proficiency. Re-engage with power.",
-  "You're proficient enough to know that decent consistency leads to mastery.",
-  "Leverage your proficiency to find a way to turn decent into great.",
-]
+
 quotes[POWERS.DECENT][EXPERIENCE.ADVANCED] = [
   "Even at an advanced stage, some days are just decent. Acknowledge the effort.",
   "Your advanced understanding allows you to learn even from a decent performance.",
@@ -412,13 +386,7 @@ quotes[POWERS.AVERAGE][EXPERIENCE.COMPETENT] = [
   "You're too competent to settle for average. Find that next gear.",
   "This average moment is a reminder to tap into your true competent potential.",
 ]
-quotes[POWERS.AVERAGE][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, an average day is a chance to re-evaluate and optimize.",
-  "Your proficiency means you can quickly bounce back from average. Don't worry.",
-  "A temporary average doesn't diminish your proficiency. It's a learning moment.",
-  "You're proficient enough to know that average is just a number. Your skill is real.",
-  "Use your proficiency to identify why this feels average and elevate it.",
-]
+
 quotes[POWERS.AVERAGE][EXPERIENCE.ADVANCED] = [
   "Even at an advanced level, average days happen. The key is how you adapt.",
   "Your advanced understanding allows you to swiftly correct from average output.",
@@ -491,13 +459,7 @@ quotes[POWERS.WEAK][EXPERIENCE.COMPETENT] = [
   "You're competent enough to know that weak moments are temporary. Overcome them.",
   "A competent fighter finds a way to win, even when feeling weak. Keep fighting.",
 ]
-quotes[POWERS.WEAK][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, a weak day is a chance to identify vulnerabilities.",
-  "Your proficiency means you can mitigate the impact of weak moments. Apply your skill.",
-  "A temporary weak period doesn't erase your proficiency. Re-center and continue.",
-  "You're proficient enough to understand the ebb and flow of strength. Recover.",
-  "Leverage your proficiency to find a way to navigate this weak phase successfully.",
-]
+
 quotes[POWERS.WEAK][EXPERIENCE.ADVANCED] = [
   "Even at an advanced stage, some days are weak. Acknowledge and learn.",
   "Your advanced understanding allows you to pinpoint the cause of this weakness.",
@@ -570,13 +532,7 @@ quotes[POWERS.FRAGILE][EXPERIENCE.COMPETENT] = [
   "You're competent enough to know that fragile moments require extra care. Give it.",
   "A competent fighter finds a way to regain balance, even when feeling fragile.",
 ]
-quotes[POWERS.FRAGILE][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, a fragile moment is a chance to deepen your mastery.",
-  "Your proficiency means you can navigate even fragile situations with skill.",
-  "A temporary fragile period doesn't erase your proficiency. It's a learning opportunity.",
-  "You're proficient enough to understand the delicate balance of progress. Restore it.",
-  "Leverage your proficiency to find stability in this fragile moment.",
-]
+
 quotes[POWERS.FRAGILE][EXPERIENCE.ADVANCED] = [
   "Even at an advanced stage, some days are fragile. Your awareness is key.",
   "Your advanced understanding allows you to anticipate and manage fragility.",
@@ -649,13 +605,7 @@ quotes[POWERS.TINY][EXPERIENCE.COMPETENT] = [
   "You're competent enough to know that every tiny effort prevents regression.",
   "A competent fighter finds a way to win, even with tiny, incremental gains.",
 ]
-quotes[POWERS.TINY][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, even a tiny effort means you're still engaged.",
-  "Your proficiency allows you to find value in tiny, consistent actions.",
-  "A temporary tiny period doesn't erase your proficiency. It's a moment to refocus.",
-  "You're proficient enough to understand the power of consistent, tiny efforts.",
-  "Leverage your proficiency to find even a tiny way forward today.",
-]
+
 quotes[POWERS.TINY][EXPERIENCE.ADVANCED] = [
   "Even at an advanced stage, some days are tiny. Acknowledge the effort.",
   "Your advanced understanding allows you to appreciate the power of tiny habits.",
@@ -728,13 +678,7 @@ quotes[POWERS.MINIMAL][EXPERIENCE.COMPETENT] = [
   "You're competent enough to know these minimal moments are part of the process.",
   "A competent fighter never quits, even with minimal gains.",
 ]
-quotes[POWERS.MINIMAL][EXPERIENCE.PROFICIENT] = [
-  "As a proficient individual, even minimal output is still a win over doing nothing.",
-  "Your proficiency means you can turn even minimal energy into meaningful action.",
-  "A temporary dip to minimal doesn't erase your proficiency. Recommit now.",
-  "You're proficient enough to know that minimal effort can still prevent a collapse.",
-  "Leverage your proficiency to find even a minimal way forward today.",
-]
+
 quotes[POWERS.MINIMAL][EXPERIENCE.ADVANCED] = [
   "Even at an advanced stage, some days are minimal. Your commitment shines through.",
   "Your advanced understanding helps you navigate even these minimal periods.",

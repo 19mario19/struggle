@@ -275,7 +275,7 @@ function createParents(array, db) {
     powerWrap.append(powerTop)
 
     const powerTitle = document.createElement("p")
-    powerTitle.textContent = "Power (winrate)"
+    powerTitle.textContent = "Power / winrate"
 
     const powerRank = document.createElement("p")
     powerRank.textContent = getPowerTitle(itemRank)
@@ -288,9 +288,13 @@ function createParents(array, db) {
 
     const stars = (winrate - (winrate % 10)) / 10
 
-    for (let i = 0; i < stars; i++) {
+    for (let i = 0; i < Object.values(POWERS).length; i++) {
       const powerImg = document.createElement("img")
-      powerImg.src = "/media/star.svg"
+      if (i <= stars) {
+        powerImg.src = "/media/star-filled.svg"
+      } else {
+        powerImg.src = "/media/star.svg"
+      }
       powerBot.append(powerImg)
     }
 
@@ -305,7 +309,7 @@ function createParents(array, db) {
     expWrap.append(expTop)
 
     const expTitle = document.createElement("p")
-    expTitle.textContent = "Experience (tries)"
+    expTitle.textContent = "Experience / tries"
 
     const expRank = document.createElement("p")
     expRank.textContent = getExperieceTitle(experiece)
@@ -322,9 +326,13 @@ function createParents(array, db) {
 
     const stars2 = expArray.indexOf(getExperieceTitle(experiece))
 
-    for (let i = 0; i < stars2; i++) {
+    for (let i = 0; i < expArray.length; i++) {
       const expImg = document.createElement("img")
-      expImg.src = "/media/energy.svg"
+      if (i <= stars2) {
+        expImg.src = "/media/energy-filled.svg"
+      } else {
+        expImg.src = "/media/energy.svg"
+      }
       expBot.append(expImg)
     }
 

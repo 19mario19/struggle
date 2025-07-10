@@ -870,7 +870,15 @@ nav {
 
                 .bot {
                     display: flex;
-                    gap: var(--space-sm);
+                    /* gap: var(--space-xs); */
+
+                    img {
+                        /* margin-left: -1rem;
+
+                        &:first-child {
+                            margin: 0;
+                        } */
+                    }
                 }
 
             }
