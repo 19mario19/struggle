@@ -324,7 +324,7 @@ function createParents(array, db) {
 
     const expArray = Object.keys(EXPERIENCE)
 
-    console.log(expArray.indexOf(getExperieceTitle(experiece)))
+    // console.log(expArray.indexOf(getExperieceTitle(experiece)))
 
     const stars2 = expArray.indexOf(getExperieceTitle(experiece))
 

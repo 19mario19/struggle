@@ -765,6 +765,7 @@ nav {
         .top {
             display: flex;
             align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
             /* flex-wrap: wrap; */
 
@@ -776,13 +777,13 @@ nav {
 
             button {
                 border-radius: var(--radius-full);
-                height: 35px;
-                width: 35px;
+                max-height: 13px;
+                max-width: 13px;
                 padding: var(--space-lg);
                 border: 5px solid var(--color-primary-background);
 
                 img {
-                    max-width: 25px;
+                    max-width: 30px;
                     opacity: .7;
 
                     transition: opacity .35s ease-in-out;
