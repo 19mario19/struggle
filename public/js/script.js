@@ -7,6 +7,40 @@ import {
   POWERS,
 } from "./quotes.js"
 
+const name = "struggles-settings"
+
+const LAYOUT = {
+  DETAILED: "DETAILED",
+  COMPACT: "COMPACT",
+}
+
+let settings = {
+  layout: LAYOUT.DETAILED,
+}
+
+function getCurrentLayout() {
+  return JSON.parse(localStorage.getItem(name))
+}
+/**
+ * @param {LAYOUT} type - The layout type to set.
+ */
+function setLayout(type) {
+  settings.layout = type
+  console.log(settings)
+  localStorage.setItem(name, JSON.stringify(settings))
+}
+
+// get from local storage
+let localSettings = JSON.parse(localStorage.getItem(name))
+if (localSettings) {
+  settings = { ...localSettings }
+} else {
+  // first init
+  localStorage.setItem(name, JSON.stringify(settings))
+}
+
+console.log(settings)
+
 window.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded!")
 
@@ -93,6 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
     createElements(currentPost.history)
 
     title.textContent = currentPost?.name ?? "no title"
+    document.title = currentPost?.name ?? "no title"
 
     const addWin = buttons?.querySelector("#win")
     const addLose = buttons?.querySelector("#lose")
@@ -116,9 +151,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   // home page
   if (pathname === "/") {
-    // if (pathname.includes("home")) {
-    // console.log(db.data)
-    createParents(db.data, db)
+    createParents(db.data, db) // keep first, as it is clearing the whole innerHTML
   }
 
   // new post
@@ -186,8 +219,34 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function createParents(array, db) {
+  let currentLayout = getCurrentLayout()
   const list = document.querySelector(".list")
   list.innerHTML = ""
+
+  const section = document.createElement("section")
+  list.insertBefore(section, list.firstChild)
+
+  // toggle layout
+  const button = document.createElement("button")
+  button.classList.add("layout-toggle")
+  button.textContent = "toggle layout"
+  section.append(button)
+
+  button.addEventListener("click", () => {
+    const { layout } = getCurrentLayout()
+
+    if (layout === LAYOUT.DETAILED) {
+      setLayout(LAYOUT.COMPACT)
+      currentLayout = layout
+
+      createParents(db.data, db) // re-render with the new state
+    } else if (layout === LAYOUT.COMPACT) {
+      setLayout(LAYOUT.DETAILED)
+      currentLayout = layout
+
+      createParents(db.data, db) // re-render with the new state
+    }
+  })
 
   const ul = document.createElement("ul")
   list.append(ul)
@@ -232,12 +291,18 @@ function createParents(array, db) {
 
     const mid = document.createElement("div")
     mid.classList.add("mid")
-    li.append(mid)
+
+    console.log("current layout", currentLayout)
+    if (currentLayout.layout === LAYOUT.DETAILED) {
+      console.log(currentLayout)
+      li.append(mid)
+    }
 
     mid.append(description)
 
     const bottom = document.createElement("div")
     bottom.classList.add("bottom")
+
     li.append(bottom)
 
     // const winrate = document.createElement("p")
@@ -338,7 +403,10 @@ function createParents(array, db) {
       expBot.append(expImg)
     }
 
-    li.append(wrapper)
+    if (currentLayout.layout === LAYOUT.DETAILED) {
+      console.log(currentLayout)
+      li.append(wrapper)
+    }
 
     // quote
     const quote = document.createElement("p")
@@ -361,6 +429,7 @@ function createParents(array, db) {
 
     ul.append(li)
   }
+
   // console.log(array.length)
 }
 

@@ -41,23 +41,22 @@ app.get("/posts/:id", async (req, res) => {
 
   const layout = LayoutDir(
     {
-      title: `Post | ${id}`,
       content: { nav: Navigation(), body: template, footer: Footer() },
     },
     true,
     2,
   )
 
-  const pathDir = path.join(pagesDir, "dynamic", `page-${id}`)
+  const pathDir = path.join(pagesDir, "dynamic")
   const pathFile = path.join(pathDir, "index.html")
 
-  try {
-    await fs.access(pathFile)
-    return res.status(200).sendFile(pathFile)
-  } catch (error) {
-    console.log("File does not exist or error")
-    if (error) console.log(error)
-  }
+  // try {
+  //   await fs.access(pathFile)
+  //   return res.status(200).sendFile(pathFile)
+  // } catch (error) {
+  //   console.log("File does not exist or error")
+  //   if (error) console.log(error)
+  // }
 
   console.log(pagesDir)
   console.log(pathFile)
