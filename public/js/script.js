@@ -22,6 +22,7 @@ const THEME = {
 let settings = {
   layout: LAYOUT.DETAILED,
   theme: THEME.DARK,
+  edit: false,
 }
 
 function getCurrentSettings() {
@@ -40,6 +41,11 @@ function setTheme(type) {
   // console.log(settings)
   localStorage.setItem(name, JSON.stringify(settings))
   document.body.classList.toggle("light-theme")
+}
+
+function setEdit(value) {
+  settings.edit = value
+  localStorage.setItem(name, JSON.stringify(settings))
 }
 
 // get from local storage
@@ -279,17 +285,35 @@ function createParents(array, db) {
   themeToggle.append(themeImg)
   section.append(themeToggle)
 
-
-
   themeToggle.addEventListener("click", () => {
     const { theme } = getCurrentSettings()
 
     if (theme === THEME.DARK) {
       setTheme(THEME.LIGHT)
-   
     } else if (theme === THEME.LIGHT) {
       setTheme(THEME.DARK)
-   
+    }
+  })
+
+  const editBtn = document.createElement("button")
+  editBtn.classList.add("theme-toggle")
+  const editImg = document.createElement("img")
+  editImg.src = "/media/icons/edit.svg"
+  editBtn.append(editImg)
+  section.append(editBtn)
+
+  editBtn.addEventListener("click", () => {
+    const { edit } = getCurrentSettings()
+
+    edit ? setEdit(false) : setEdit(true)
+
+    console.log("edit: ", edit)
+
+    const deleteButtons = document.querySelectorAll(".delete")
+    if (deleteButtons.length > 0) {
+      for (let btn of Array.from(deleteButtons)) {
+        btn.style.display = edit ? "flex" : "none"
+      }
     }
   })
 
@@ -316,6 +340,7 @@ function createParents(array, db) {
     anchor.append(title)
 
     const deleteElement = document.createElement("button")
+    deleteElement.classList.add("delete")
 
     const dImg = document.createElement("img")
     dImg.src = "/media/delete.svg"
@@ -333,7 +358,8 @@ function createParents(array, db) {
       li.style.display = "none"
     })
 
-    top.append(anchor, deleteElement)
+    top.append(anchor)
+    top.append(deleteElement)
 
     const mid = document.createElement("div")
     mid.classList.add("mid")
