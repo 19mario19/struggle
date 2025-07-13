@@ -52,6 +52,8 @@ body {
     /* macOS/iOS font smoothing */
     cursor: default;
     /* Ensures consistent cursor appearance */
+
+    transition: background-color .05s ease;
 }
 
 /* Make images easier to work with */
@@ -115,8 +117,8 @@ select {
     --font-size-body: clamp(1rem, 0.9rem + 1vw, 1.25rem);
     --font-size-lg: clamp(1.25rem, 1.1rem + 1.5vw, 1.5rem);
     --font-size-xl: clamp(1.5rem, 1.3rem + 2vw, 2rem);
-    --font-size-xxl: clamp(2rem, 1.7rem + 3vw, 2.75rem);
-    --font-size-xxxl: clamp(2.5rem, 2rem + 4vw, 3.5rem);
+    --font-size-xxl: clamp(1.75rem, 1.5rem + 2vw, 2.25rem);
+    --font-size-xxxl: clamp(2rem, 1.75rem + 2.5vw, 2.75rem);
 
     --line-height-heading: 1.2;
     --line-height-body: 1.6;
@@ -154,24 +156,36 @@ select {
     --color-warning: #fbbf24;
 }
 
-/* Light Theme Overrides */
 .light-theme {
-    --color-primary-background: #f0f2f5;
-    /* Light grey/off-white background */
-    --color-primary-text: #222222;
-    /* Dark text for readability */
+    --color-primary-background: #faf8f5;
+    /* A soft parchment—aged, calm, readable */
 
-    --color-accent-primary: #007bff;
-    /* A bright, professional blue */
-    --color-accent-secondary: #0056b3;
-    /* A darker shade for secondary actions */
+    --color-primary-text: #1e1e1e;
+    /* Charcoal black—strong contrast but not pure black */
 
-    --color-neutral-dark: #ffffff;
-    /* White for cards */
-    --color-neutral-medium: #cccccc;
-    /* Light gray for borders/dividers */
-    --color-neutral-light: #eeeeee;
-    /* Very light gray for subtle backgrounds */
+    --color-accent-primary: #a7221b;
+    /* A more sun-washed version of your desire red */
+
+    --color-accent-secondary: #c14000;
+    /* A tamed, weathered flame orange */
+
+    --color-neutral-dark: #ded6c6;
+    /* Aged ivory—for cards and contrast blocks */
+
+    --color-neutral-medium: #b08a7f;
+    /* Faded terracotta—emotional warmth */
+
+    --color-neutral-light: #f1ede3;
+    /* Light bone—memory and subtlety */
+
+    --color-success: #4f9d1a;
+    /* Muted success tone with organic vibe */
+
+    --color-error: #a7221b;
+    /* Match accent-primary — same moral signal */
+
+    --color-warning: #e0a800;
+    /* Muted amber — ancient caution, not tech yellow */
 }
 
 /* --- 3. Base Element Styles --- */
@@ -732,6 +746,15 @@ nav {
         gap: var(--space-sm);
         padding: var(--space-sm) 0;
         flex-direction: column;
+
+
+        @media (min-width: 576px) {
+            flex-direction: row;
+            gap: var(--space-md);
+            /* align-items: center; */
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     }
 
     li.win {
@@ -952,6 +975,15 @@ nav {
 
     }
 
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+    gap: var(--space-lg);
+
+    button.layout-toggle {}
 }
 
 ul.individual {

@@ -14,38 +14,51 @@ const LAYOUT = {
   COMPACT: "COMPACT",
 }
 
-let settings = {
-  layout: LAYOUT.DETAILED,
+const THEME = {
+  LIGHT: "LIGHT",
+  DARK: "DARK",
 }
 
-function getCurrentLayout() {
+let settings = {
+  layout: LAYOUT.DETAILED,
+  theme: THEME.DARK,
+}
+
+function getCurrentSettings() {
   return JSON.parse(localStorage.getItem(name))
 }
-/**
- * @param {LAYOUT} type - The layout type to set.
- */
+
 function setLayout(type) {
   settings.layout = type
-  console.log(settings)
+  // console.log(settings)
   localStorage.setItem(name, JSON.stringify(settings))
+}
+
+function setTheme(type) {
+  console.log("toggling the theme!")
+  settings.theme = type
+  // console.log(settings)
+  localStorage.setItem(name, JSON.stringify(settings))
+  document.body.classList.toggle("light-theme")
 }
 
 // get from local storage
 let localSettings = JSON.parse(localStorage.getItem(name))
 if (localSettings) {
   settings = { ...localSettings }
+  if (settings.theme === THEME.LIGHT) document.body.classList.add("light-theme")
 } else {
   // first init
   localStorage.setItem(name, JSON.stringify(settings))
 }
 
-console.log(settings)
+// console.log(settings)
 
 window.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM loaded!")
+  // console.log("DOM loaded!")
 
   const { pathname } = getCurrentURL()
-  // console.log(pathname)
+  // // console.log(pathname)
 
   let objects = [
     {
@@ -117,11 +130,11 @@ window.addEventListener("DOMContentLoaded", () => {
   if (pathname.includes("post")) {
     const buttons = document.querySelector(".buttons")
     const id = buttons.dataset.id
-    // console.log(id)
+    // // console.log(id)
 
     const title = document?.querySelector("#title")
-    // console.log(title)
-    // console.log(db.data)
+    // // console.log(title)
+    // // console.log(db.data)
 
     const currentPost = db.getById(id)
     createElements(currentPost.history)
@@ -168,10 +181,10 @@ window.addEventListener("DOMContentLoaded", () => {
         name: name.value.trim(),
         description: description.value.trim(),
       }
-      // console.log(newObject)
+      // // console.log(newObject)
 
       if (newObject.name === "" || newObject.description === "") {
-        console.log("Please complete both inputs!")
+        // console.log("Please complete both inputs!")
         return
       }
 
@@ -219,7 +232,7 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function createParents(array, db) {
-  let currentLayout = getCurrentLayout()
+  let currentLayout = getCurrentSettings()
   const list = document.querySelector(".list")
   list.innerHTML = ""
 
@@ -230,10 +243,13 @@ function createParents(array, db) {
   const button = document.createElement("button")
   button.classList.add("layout-toggle")
   button.textContent = "toggle layout"
+  const btnImg = document.createElement("img")
+  btnImg.src = ""
+  button.append(btnImg)
   section.append(button)
 
   button.addEventListener("click", () => {
-    const { layout } = getCurrentLayout()
+    const { layout } = getCurrentSettings()
 
     if (layout === LAYOUT.DETAILED) {
       setLayout(LAYOUT.COMPACT)
@@ -248,6 +264,26 @@ function createParents(array, db) {
     }
   })
 
+  // theme toggle
+  const themeToggle = document.createElement("button")
+  themeToggle.classList.add("theme-toggle")
+  themeToggle.textContent = "toggle theme"
+  const themeImg = document.createElement("img")
+  themeImg.src = ""
+  themeToggle.append(themeImg)
+  section.append(themeToggle)
+
+  themeToggle.addEventListener("click", () => {
+    const { theme } = getCurrentSettings()
+
+    if (theme === THEME.DARK) {
+      setTheme(THEME.LIGHT)
+    } else if (theme === THEME.LIGHT) {
+      setTheme(THEME.DARK)
+    }
+  })
+
+  // creating the elements
   const ul = document.createElement("ul")
   list.append(ul)
   for (let item of array) {
@@ -260,7 +296,7 @@ function createParents(array, db) {
     const anchor = document.createElement("a")
     anchor.href = `/posts/${item.id}`
 
-    const title = document.createElement("h2")
+    const title = document.createElement("h4")
     title.textContent = item.name
 
     const description = document.createElement("p")
@@ -292,9 +328,9 @@ function createParents(array, db) {
     const mid = document.createElement("div")
     mid.classList.add("mid")
 
-    console.log("current layout", currentLayout)
+    // console.log("current layout", currentLayout)
     if (currentLayout.layout === LAYOUT.DETAILED) {
-      console.log(currentLayout)
+      // console.log(currentLayout)
       li.append(mid)
     }
 
@@ -308,7 +344,7 @@ function createParents(array, db) {
     // const winrate = document.createElement("p")
     // winrate.classList.add("winrate")
     let winrate = db.getWinrate(item.id)
-    // console.log(winrate)
+    // // console.log(winrate)
     // count
     const winCount = document.createElement("h3")
     winCount.classList.add("winCount")
@@ -389,7 +425,7 @@ function createParents(array, db) {
 
     const expArray = Object.keys(EXPERIENCE)
 
-    // console.log(expArray.indexOf(getExperieceTitle(experiece)))
+    // // console.log(expArray.indexOf(getExperieceTitle(experiece)))
 
     const stars2 = expArray.indexOf(getExperieceTitle(experiece))
 
@@ -404,7 +440,7 @@ function createParents(array, db) {
     }
 
     if (currentLayout.layout === LAYOUT.DETAILED) {
-      console.log(currentLayout)
+      // console.log(currentLayout)
       li.append(wrapper)
     }
 
@@ -416,12 +452,12 @@ function createParents(array, db) {
       quotes[POWERS[getPowerTitle(itemRank)]][
         EXPERIENCE[getExperieceTitle(experiece)]
       ] || []
-    // console.log(itemQuotesArray)
+    // // console.log(itemQuotesArray)
     const len = itemQuotesArray?.length ?? 0
 
     const random = Math.floor(Math.random() * len)
 
-    // console.log(itemQuotesArray[random])
+    // // console.log(itemQuotesArray[random])
 
     quote.textContent = itemQuotesArray[random]
 
@@ -430,7 +466,7 @@ function createParents(array, db) {
     ul.append(li)
   }
 
-  // console.log(array.length)
+  // // console.log(array.length)
 }
 
 function createElements(array) {
@@ -468,17 +504,17 @@ function createElements(array) {
     if (item.state === "lose") li.classList.add("lose")
     ul.append(li)
   }
-  // console.log(array.length)
+  // // console.log(array.length)
 }
 function displayHistory(array) {
   for (let item of array) {
-    console.log("Item: ", item.createdAt)
+    // console.log("Item: ", item.createdAt)
   }
-  // console.log(array.length)
+  // // console.log(array.length)
 }
 function getCurrentURL() {
   for (let item in window.location) {
-    // console.log(item, window.location[item])
+    // // console.log(item, window.location[item])
   }
   return { url: window.location.href, pathname: window.location.pathname }
 }
