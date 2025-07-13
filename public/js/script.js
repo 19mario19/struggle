@@ -237,16 +237,23 @@ function createParents(array, db) {
   list.innerHTML = ""
 
   const section = document.createElement("section")
+  section.classList.add("controls")
   list.insertBefore(section, list.firstChild)
 
   // toggle layout
   const button = document.createElement("button")
   button.classList.add("layout-toggle")
-  button.textContent = "toggle layout"
   const btnImg = document.createElement("img")
-  btnImg.src = ""
+  btnImg.src = "/media/icons/view.svg"
   button.append(btnImg)
   section.append(button)
+
+  const { layout } = getCurrentSettings()
+  if (layout === LAYOUT.DETAILED) {
+    button.classList.add("active")
+  } else if (layout === LAYOUT.COMPACT) {
+    button.classList.remove("active")
+  }
 
   button.addEventListener("click", () => {
     const { layout } = getCurrentSettings()
@@ -267,19 +274,22 @@ function createParents(array, db) {
   // theme toggle
   const themeToggle = document.createElement("button")
   themeToggle.classList.add("theme-toggle")
-  themeToggle.textContent = "toggle theme"
   const themeImg = document.createElement("img")
-  themeImg.src = ""
+  themeImg.src = "/media/icons/theme.svg"
   themeToggle.append(themeImg)
   section.append(themeToggle)
+
+
 
   themeToggle.addEventListener("click", () => {
     const { theme } = getCurrentSettings()
 
     if (theme === THEME.DARK) {
       setTheme(THEME.LIGHT)
+   
     } else if (theme === THEME.LIGHT) {
       setTheme(THEME.DARK)
+   
     }
   })
 

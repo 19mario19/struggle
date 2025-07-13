@@ -977,18 +977,41 @@ nav {
 
 }
 
-section {
+section.controls {
     display: flex;
     justify-content: center;
     margin-bottom: var(--space-lg);
     gap: var(--space-lg);
-    
+
     ul {
         margin: 0;
         width: 100%;
     }
 
-    button.layout-toggle {}
+    button {
+        margin: 0;
+        padding: var(--space-xs);
+        border-radius: var(--radius-full);
+
+        background-color: var(--color-neutral-light);
+        border: 5px solid var(--color-neutral-dark);
+
+        img {
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        &.layout-toggle {
+            opacity: .8;
+        }
+
+        &.layout-toggle.active {
+            opacity: 1;
+            background-color: var(--color-success);
+        }
+    }
 }
 
 ul.individual {
