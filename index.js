@@ -47,8 +47,8 @@ app.get("/posts/:id", async (req, res) => {
     2,
   )
 
-  const pathDir = path.join(pagesDir, "dynamic")
-  const pathFile = path.join(pathDir, "index.html")
+  // const pathDir = path.join(pagesDir, "dynamic")
+  // const pathFile = path.join(pathDir, "index.html")
 
   // try {
   //   await fs.access(pathFile)
@@ -58,12 +58,12 @@ app.get("/posts/:id", async (req, res) => {
   //   if (error) console.log(error)
   // }
 
-  console.log(pagesDir)
-  console.log(pathFile)
+  // console.log(pagesDir)
+  // console.log(pathFile)
 
   try {
-    await fs.mkdir(pathDir, { recursive: true })
-    await fs.writeFile(pathFile, layout, "utf-8")
+    // await fs.mkdir(pathDir, { recursive: true })
+    // await fs.writeFile(pathFile, layout, "utf-8")
 
     return res.status(200).send(layout)
     // return res.status(200).json({ message: "Created successfully" })
