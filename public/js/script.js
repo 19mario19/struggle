@@ -128,13 +128,28 @@ window.addEventListener("DOMContentLoaded", () => {
     },
   ]
 
-  const db = DBManager(objects)
+  const db = DBManager([])
 
   // for all pages
 
   const controls = document.querySelector(".controls")
 
   const btnTheme = controls?.querySelector(".theme")
+
+  const removeAll = document.createElement("button")
+  removeAll.textContent = "reset data"
+  controls.append(removeAll)
+
+  removeAll.addEventListener("click", () => {
+    if (confirm("Are you sure?")) {
+      localStorage.removeItem(name)
+      db.removeAll()
+
+      location.reload()
+    } else {
+      alert("You refused the action of removing all the data!")
+    }
+  })
 
   btnTheme.addEventListener("click", () => {
     console.log("theme clicked!")
@@ -199,22 +214,22 @@ window.addEventListener("DOMContentLoaded", () => {
       elements.push(el)
     })
 
-    const { layout } = getCurrentSettings()
-    if (layout === LAYOUT.DETAILED) {
-      // for (let item of elements) {
-      //   item.style.display = "flex"
-      // }
-    } else if (layout === LAYOUT.COMPACT) {
-      // for (let item of elements) {
-      //   item.style.display = "none"
-      // }
-    }
-
     btnView.addEventListener("click", () => {
       const toHideArray = document.querySelectorAll(".wrapper")
       // const elements = []
+
       toHideArray.forEach((el) => {
         // elements.push(el)
+
+        const { layout } = getCurrentSettings()
+
+        if (layout === LAYOUT.DETAILED) {
+          setSetting("layout", LAYOUT.COMPACT)
+          console.log("CURRENT: ", getCurrentSettings().layout)
+        } else if (layout === LAYOUT.COMPACT) {
+          setSetting("layout", LAYOUT.DETAILED)
+          console.log("CURRENT: ", getCurrentSettings().layout)
+        }
 
         el.classList.toggle("active")
       })
@@ -233,6 +248,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (edit) {
         showElements(buttons)
         edit = false
+        setSetting("edit", false)
       } else if (!edit) {
         hideElements(buttons)
         edit = true
@@ -305,7 +321,6 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function createParents(array, db) {
-  let currentLayout = getCurrentSettings()
   const list = document.querySelector(".list")
   list.innerHTML = ""
 
@@ -357,11 +372,7 @@ function createParents(array, db) {
     const mid = document.createElement("div")
     mid.classList.add("mid")
 
-    // console.log("current layout", currentLayout)
-    if (currentLayout.layout === LAYOUT.DETAILED) {
-      // console.log(currentLayout)
-      li.append(mid)
-    }
+    li.append(mid)
 
     mid.append(description)
 
@@ -395,7 +406,12 @@ function createParents(array, db) {
 
     // ranking
     const wrapper = document.createElement("section")
-    wrapper.classList.add("wrapper", "active")
+
+    if (getCurrentSettings().layout === LAYOUT.DETAILED) {
+      wrapper.classList.add("active")
+    }
+
+    wrapper.classList.add("wrapper")
 
     // power - winrate
     const powerWrap = document.createElement("div")
@@ -468,10 +484,7 @@ function createParents(array, db) {
       expBot.append(expImg)
     }
 
-    if (currentLayout.layout === LAYOUT.DETAILED) {
-      // console.log(currentLayout)
-      li.append(wrapper)
-    }
+    li.append(wrapper)
 
     // quote
     const quote = document.createElement("p")
