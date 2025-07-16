@@ -901,7 +901,13 @@ nav {
         }
 
         .wrapper {
-            display: flex;
+            display: none;
+
+            &.active {
+                display: flex;
+            }
+
+
             flex-direction: column;
             flex-wrap: wrap;
             gap: var(--space-sm);

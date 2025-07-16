@@ -192,23 +192,32 @@ window.addEventListener("DOMContentLoaded", () => {
     createParents(db.data, db) // keep first, as it is clearing the whole innerHTML
     const btnView = controls?.querySelector(".view")
 
+    // get elements to hide
     const toHideArray = document.querySelectorAll(".wrapper")
     const elements = []
     toHideArray.forEach((el) => {
       elements.push(el)
     })
 
-    btnView.addEventListener("click", () => {
-      const { layout } = getCurrentSettings()
-      console.log("layout value =>", layout)
+    const { layout } = getCurrentSettings()
+    if (layout === LAYOUT.DETAILED) {
+      // for (let item of elements) {
+      //   item.style.display = "flex"
+      // }
+    } else if (layout === LAYOUT.COMPACT) {
+      // for (let item of elements) {
+      //   item.style.display = "none"
+      // }
+    }
 
-      if (layout === LAYOUT.DETAILED) {
-        showElements(elements)
-        setSetting("layout", LAYOUT.COMPACT)
-      } else if (layout === LAYOUT.COMPACT) {
-        hideElements(elements)
-        setSetting("layout", LAYOUT.DETAILED)
-      }
+    btnView.addEventListener("click", () => {
+      const toHideArray = document.querySelectorAll(".wrapper")
+      // const elements = []
+      toHideArray.forEach((el) => {
+        // elements.push(el)
+
+        el.classList.toggle("active")
+      })
     })
 
     let edit = true
@@ -386,7 +395,7 @@ function createParents(array, db) {
 
     // ranking
     const wrapper = document.createElement("section")
-    wrapper.classList.add("wrapper")
+    wrapper.classList.add("wrapper", "active")
 
     // power - winrate
     const powerWrap = document.createElement("div")
