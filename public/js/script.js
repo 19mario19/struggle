@@ -22,30 +22,29 @@ const THEME = {
 let settings = {
   layout: LAYOUT.DETAILED,
   theme: THEME.DARK,
-  edit: false,
 }
 
+/**
+ * Updates a specific setting and persists the changes to localStorage.
+ *
+ * @param {keyof typeof settings} key - The setting key to update (e.g., "layout", "theme", "edit").
+ * @param {string | boolean} value - The new value for the specified setting.
+ * @throws {Error} Throws an error if key or value is not provided.
+ */
 function getCurrentSettings() {
   return JSON.parse(localStorage.getItem(name))
 }
 
-function setLayout(type) {
-  settings.layout = type
-  // console.log(settings)
+function setSetting(key, value) {
+  // if (!key || !value) throw new Error("Fill key and value!")
+
+  settings[key] = value
+
   localStorage.setItem(name, JSON.stringify(settings))
 }
 
-function setTheme(type) {
-  console.log("toggling the theme!")
-  settings.theme = type
-  // console.log(settings)
-  localStorage.setItem(name, JSON.stringify(settings))
-  document.body.classList.toggle("light-theme")
-}
-
-function setEdit(value) {
-  settings.edit = value
-  localStorage.setItem(name, JSON.stringify(settings))
+function setTheme(theme) {
+  setSetting("theme", theme)
 }
 
 // get from local storage
@@ -130,7 +129,27 @@ window.addEventListener("DOMContentLoaded", () => {
   ]
 
   const db = DBManager(objects)
-  // db.removeAll()
+
+  // for all pages
+
+  const controls = document.querySelector(".controls")
+
+  const btnTheme = controls?.querySelector(".theme")
+
+  btnTheme.addEventListener("click", () => {
+    console.log("theme clicked!")
+    const { theme } = getCurrentSettings()
+
+    if (theme === THEME.DARK) {
+      setTheme(THEME.LIGHT)
+      document.body.classList.add("light-theme")
+    } else if (theme === THEME.LIGHT) {
+      document.body.classList.remove("light-theme")
+      setTheme(THEME.DARK)
+    } else {
+      throw new Error("You can heve eigher light or dark theme!")
+    }
+  })
 
   // for individual page
   if (pathname.includes("post")) {
@@ -171,6 +190,45 @@ window.addEventListener("DOMContentLoaded", () => {
   // home page
   if (pathname === "/") {
     createParents(db.data, db) // keep first, as it is clearing the whole innerHTML
+    const btnView = controls?.querySelector(".view")
+
+    const toHideArray = document.querySelectorAll(".wrapper")
+    const elements = []
+    toHideArray.forEach((el) => {
+      elements.push(el)
+    })
+
+    btnView.addEventListener("click", () => {
+      const { layout } = getCurrentSettings()
+      console.log("layout value =>", layout)
+
+      if (layout === LAYOUT.DETAILED) {
+        showElements(elements)
+        setSetting("layout", LAYOUT.COMPACT)
+      } else if (layout === LAYOUT.COMPACT) {
+        hideElements(elements)
+        setSetting("layout", LAYOUT.DETAILED)
+      }
+    })
+
+    let edit = true
+    const btnEdit = controls?.querySelector(".edit")
+    btnEdit.addEventListener("click", () => {
+      console.log("clicked edit: => ")
+      const topArray = document.querySelectorAll(".top button")
+      let buttons = []
+      topArray.forEach((btn) => {
+        buttons.push(btn)
+      })
+
+      if (edit) {
+        showElements(buttons)
+        edit = false
+      } else if (!edit) {
+        hideElements(buttons)
+        edit = true
+      }
+    })
   }
 
   // new post
@@ -242,81 +300,6 @@ function createParents(array, db) {
   const list = document.querySelector(".list")
   list.innerHTML = ""
 
-  const section = document.createElement("section")
-  section.classList.add("controls")
-  list.insertBefore(section, list.firstChild)
-
-  // toggle layout
-  const button = document.createElement("button")
-  button.classList.add("layout-toggle")
-  const btnImg = document.createElement("img")
-  btnImg.src = "/media/icons/view.svg"
-  button.append(btnImg)
-  section.append(button)
-
-  const { layout } = getCurrentSettings()
-  if (layout === LAYOUT.DETAILED) {
-    button.classList.add("active")
-  } else if (layout === LAYOUT.COMPACT) {
-    button.classList.remove("active")
-  }
-
-  button.addEventListener("click", () => {
-    const { layout } = getCurrentSettings()
-
-    if (layout === LAYOUT.DETAILED) {
-      setLayout(LAYOUT.COMPACT)
-      currentLayout = layout
-
-      createParents(db.data, db) // re-render with the new state
-    } else if (layout === LAYOUT.COMPACT) {
-      setLayout(LAYOUT.DETAILED)
-      currentLayout = layout
-
-      createParents(db.data, db) // re-render with the new state
-    }
-  })
-
-  // theme toggle
-  const themeToggle = document.createElement("button")
-  themeToggle.classList.add("theme-toggle")
-  const themeImg = document.createElement("img")
-  themeImg.src = "/media/icons/theme.svg"
-  themeToggle.append(themeImg)
-  section.append(themeToggle)
-
-  themeToggle.addEventListener("click", () => {
-    const { theme } = getCurrentSettings()
-
-    if (theme === THEME.DARK) {
-      setTheme(THEME.LIGHT)
-    } else if (theme === THEME.LIGHT) {
-      setTheme(THEME.DARK)
-    }
-  })
-
-  const editBtn = document.createElement("button")
-  editBtn.classList.add("theme-toggle")
-  const editImg = document.createElement("img")
-  editImg.src = "/media/icons/edit.svg"
-  editBtn.append(editImg)
-  section.append(editBtn)
-
-  editBtn.addEventListener("click", () => {
-    const { edit } = getCurrentSettings()
-
-    edit ? setEdit(false) : setEdit(true)
-
-    console.log("edit: ", edit)
-
-    const deleteButtons = document.querySelectorAll(".delete")
-    if (deleteButtons.length > 0) {
-      for (let btn of Array.from(deleteButtons)) {
-        btn.style.display = edit ? "flex" : "none"
-      }
-    }
-  })
-
   // creating the elements
   const ul = document.createElement("ul")
   list.append(ul)
@@ -341,6 +324,7 @@ function createParents(array, db) {
 
     const deleteElement = document.createElement("button")
     deleteElement.classList.add("delete")
+    deleteElement.style.display = "none"
 
     const dImg = document.createElement("img")
     dImg.src = "/media/delete.svg"
@@ -504,7 +488,6 @@ function createParents(array, db) {
 
   // // console.log(array.length)
 }
-
 function createElements(array) {
   const list = document.querySelector(".list")
   list.innerHTML = ""
@@ -542,15 +525,18 @@ function createElements(array) {
   }
   // // console.log(array.length)
 }
-function displayHistory(array) {
-  for (let item of array) {
-    // console.log("Item: ", item.createdAt)
-  }
-  // // console.log(array.length)
-}
 function getCurrentURL() {
-  for (let item in window.location) {
-    // // console.log(item, window.location[item])
-  }
   return { url: window.location.href, pathname: window.location.pathname }
+}
+function hideElement(element) {
+  element.style.display = "none"
+}
+function hideElements(array) {
+  for (let item of array) hideElement(item)
+}
+function showElement(element) {
+  element.style.display = "flex"
+}
+function showElements(array) {
+  for (let item of array) showElement(item)
 }

@@ -15,6 +15,11 @@ function Navigation() {
     <ul class="parents">
     ${elements}
     </ul>
+    <div class="controls">
+        <button class="theme">
+          <img src="/media/icons/theme.svg" alt="theme toggle icon" />
+        </button>
+      </div>
 </nav>`
 }
 

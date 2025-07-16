@@ -680,6 +680,11 @@ main {
 }
 
 nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+
     ul {
         display: flex;
         gap: 1rem;
@@ -687,6 +692,33 @@ nav {
         justify-content: space-around;
 
         margin: 0 auto;
+    }
+
+    .controls {
+        display: flex;
+        gap: var(--space-xs);
+
+        button {
+            height: 40px;
+            width: 40px;
+            border-radius: var(--radius-full);
+            padding: var(--space-xs);
+
+            background-color: var(--color-accent-secondary);
+            border: 2px solid var(--color-accent-secondary);
+
+            img {
+                height: 40px;
+                width: 40px;
+            }
+
+            opacity: .9;
+
+            &.active {
+                background-color: var(--color-success);
+                opacity: 1;
+            }
+        }
     }
 
 }
@@ -1007,9 +1039,16 @@ section.controls {
             opacity: .8;
         }
 
-        &.layout-toggle.active {
+        &.layout-toggle.active,
+        &.edit-toggle.active {
             opacity: 1;
             background-color: var(--color-success);
+        }
+
+        button.edit.active {
+            opacity: 1;
+            background-color: var(--color-success);
+
         }
     }
 }
@@ -1068,4 +1107,3 @@ footer {
     align-items: center;
     justify-content: center;
 }
-
