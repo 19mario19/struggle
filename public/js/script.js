@@ -39,8 +39,10 @@ function setSetting(key, value) {
   // if (!key || !value) throw new Error("Fill key and value!")
 
   settings[key] = value
+  // console.log(settings[key])
 
   localStorage.setItem(name, JSON.stringify(settings))
+  console.log("get after set => ", getCurrentSettings())
 }
 
 function setTheme(theme) {
@@ -135,10 +137,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const controls = document.querySelector(".controls")
 
   const btnTheme = controls?.querySelector(".theme")
+  getCurrentSettings().theme === THEME.LIGHT
+    ? btnTheme.classList.add("active")
+    : btnTheme.classList.remove("active")
 
-  const removeAll = document.createElement("button")
-  removeAll.textContent = "reset data"
-  controls.append(removeAll)
+
+  const removeAll = controls?.querySelector(".remove-all")
 
   removeAll.addEventListener("click", () => {
     if (confirm("Are you sure?")) {
@@ -158,9 +162,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (theme === THEME.DARK) {
       setTheme(THEME.LIGHT)
       document.body.classList.add("light-theme")
+      btnTheme.classList.add("active")
     } else if (theme === THEME.LIGHT) {
       document.body.classList.remove("light-theme")
       setTheme(THEME.DARK)
+      btnTheme.classList.remove("active")
     } else {
       throw new Error("You can heve eigher light or dark theme!")
     }
@@ -206,6 +212,9 @@ window.addEventListener("DOMContentLoaded", () => {
   if (pathname === "/") {
     createParents(db.data, db) // keep first, as it is clearing the whole innerHTML
     const btnView = controls?.querySelector(".view")
+    getCurrentSettings().layout === LAYOUT.DETAILED
+      ? btnView.classList.add("active")
+      : btnView.classList.remove("active")
 
     // get elements to hide
     const toHideArray = document.querySelectorAll(".wrapper")
@@ -218,25 +227,31 @@ window.addEventListener("DOMContentLoaded", () => {
       const toHideArray = document.querySelectorAll(".wrapper")
       // const elements = []
 
-      toHideArray.forEach((el) => {
-        // elements.push(el)
+      // elements.push(el)
 
-        const { layout } = getCurrentSettings()
+      const { layout } = getCurrentSettings()
 
-        if (layout === LAYOUT.DETAILED) {
-          setSetting("layout", LAYOUT.COMPACT)
-          console.log("CURRENT: ", getCurrentSettings().layout)
-        } else if (layout === LAYOUT.COMPACT) {
-          setSetting("layout", LAYOUT.DETAILED)
-          console.log("CURRENT: ", getCurrentSettings().layout)
-        }
+      if (layout === LAYOUT.DETAILED) {
+        // el.classList.toggle("active")
 
-        el.classList.toggle("active")
-      })
+        setSetting("layout", LAYOUT.COMPACT)
+        hideElements(toHideArray)
+        btnView.classList.remove("active")
+
+        // console.log("CURRENT: ", getCurrentSettings().layout)
+      } else if (layout === LAYOUT.COMPACT) {
+        setSetting("layout", LAYOUT.DETAILED)
+        showElements(toHideArray)
+        btnView.classList.add("active")
+        // console.log("CURRENT: ", getCurrentSettings().layout)
+      }
+
+      // el.classList.toggle("active")
     })
 
     let edit = true
     const btnEdit = controls?.querySelector(".edit")
+
     btnEdit.addEventListener("click", () => {
       console.log("clicked edit: => ")
       const topArray = document.querySelectorAll(".top button")

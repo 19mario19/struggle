@@ -12,6 +12,7 @@ function Navigation() {
 
   return /*html*/ `
 <nav class="main-header">
+ <div class="nav-wrap">
     <ul class="parents">
     ${elements}
     </ul>
@@ -19,7 +20,11 @@ function Navigation() {
         <button class="theme">
           <img src="/media/icons/theme.svg" alt="theme toggle icon" />
         </button>
+        <button class="remove-all">
+          <img src="/media/icons/remove-all.svg" alt="remove all posts icon" />
+        </button>
       </div>
+  </div>
 </nav>`
 }
 
