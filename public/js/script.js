@@ -141,7 +141,6 @@ window.addEventListener("DOMContentLoaded", () => {
     ? btnTheme.classList.add("active")
     : btnTheme.classList.remove("active")
 
-
   const removeAll = controls?.querySelector(".remove-all")
 
   removeAll.addEventListener("click", () => {
@@ -303,15 +302,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // adding examples
 
-    const container = document.querySelector(".container")
+    const container = document.querySelector("main.container")
+
     const section = document.createElement("section")
     section.classList.add("list")
     container.append(section)
 
-    const message = document.createElement("h4")
-    message.classList.add("message")
-    message.textContent = "Examples below."
-    section.append(message)
+    // const message = document.createElement("h4")
+    // message.classList.add("message")
+    // message.textContent = "Examples below."
+    // section.append(message)
 
     const ul = document.createElement("ul")
     section.append(ul)

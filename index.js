@@ -30,7 +30,7 @@ app.get("/posts/:id", async (req, res) => {
 
   const template = /*html*/ `
   <div class="container">
-    <h1 id="title"></h1>
+    <h3 id="title"></h3>
     <div data-id="${id}" class="buttons">
       <button id="win">WIN</button>
       <button id="lose">LOSE</button>

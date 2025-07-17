@@ -12,7 +12,7 @@ function Navigation() {
 
   return /*html*/ `
 <nav class="main-header">
- <div class="nav-wrap">
+ <div class="nav-wrap container">
     <ul class="parents">
     ${elements}
     </ul>

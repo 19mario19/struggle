@@ -13,6 +13,7 @@ function LayoutDir(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${stylePath}" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>${title}</title>
     ${description ? `<meta name="description" content="${description}">` : ""}
     ${script ? '<script src="/js/script.js" defer type="module"></script>' : ""}

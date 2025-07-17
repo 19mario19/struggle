@@ -344,11 +344,12 @@ select:focus {
 /* Navigation Bar */
 .main-header {
     background-color: var(--color-neutral-dark);
-    padding: var(--space-md) var(--space-lg);
+    /* padding: var(--space-md) var(--space-lg);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
+
 }
 
 .logo {
@@ -563,113 +564,6 @@ main {
     color: var(--color-accent-primary);
 }
 
-/* --- 6. Advanced Responsiveness (Media Queries) --- */
-
-/* Basic grid for cards for demonstration - included here for completeness */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
-    margin-top: var(--space-xxl);
-}
-
-/* Adjusting container for different screen sizes */
-@media (max-width: 1400px) {
-    .container {
-        max-width: 1100px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .container {
-        max-width: 960px;
-    }
-
-    .main-nav ul {
-        gap: var(--space-md);
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        max-width: 720px;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: var(--space-sm);
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: var(--space-md);
-    }
-
-    /* Font size adjustments for smaller screens */
-    h1 {
-        font-size: var(--font-size-xxl);
-    }
-
-    h2 {
-        font-size: var(--font-size-xl);
-    }
-
-    h3 {
-        font-size: var(--font-size-lg);
-    }
-
-    /* Example: Stack cards vertically on smaller screens */
-    .card-grid {
-        display: block;
-        /* Override any grid/flex parent for stacking */
-    }
-}
-
-@media (max-width: 576px) {
-    .container {
-        padding: var(--space-sm);
-    }
-
-    h1 {
-        font-size: var(--font-size-xl);
-    }
-
-    h2 {
-        font-size: var(--font-size-lg);
-    }
-
-    p {
-        font-size: var(--font-size-sm);
-    }
-
-    .main-header {
-        flex-direction: column;
-        padding: var(--space-md);
-    }
-
-    .main-nav {
-        margin-top: var(--space-md);
-        width: 100%;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .main-nav li {
-        width: 100%;
-        text-align: center;
-        padding: var(--space-xs) 0;
-    }
-}
-
-.padding-md {
-    padding: var(--space-md);
-}
 
 /* --- 7. Utility Classes --- */
 /* Layout & Spacing */
@@ -679,7 +573,14 @@ main {
     padding: var(--space-md);
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 nav {
+    display: flex;
+    flex-direction: column;
     padding: 0;
 
     .nav-wrap {
@@ -690,14 +591,30 @@ nav {
         justify-content: space-between;
         gap: var(--space-lg);
 
+        &.container {
+            padding: var(--space-md);
+        }
+
+
+        /* @media (min-width: 576px) {
+
+        } */
+
 
         ul {
             display: flex;
             gap: 1rem;
             align-items: center;
+            justify-content: center;
             /* justify-content: space-around; */
 
             /* margin: 0 auto; */
+
+            li {
+                font-size: var(--font-size-body);
+                font-weight: 500;
+                text-transform: capitalize;
+            }
         }
 
         .controls {
@@ -797,20 +714,23 @@ nav {
         flex-direction: column;
 
 
-        @media (min-width: 576px) {
-            flex-direction: row;
-            gap: var(--space-md);
-            /* align-items: center; */
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-
+        @media (max-width: 576px) {
             li {
                 width: 100%;
                 margin: 0 auto;
             }
         }
+
+        @media (min-width: 576px) {
+            flex-direction: row;
+            gap: var(--space-md);
+            /* align-items: center; */
+            justify-content: center;
+            flex-wrap: wrap;
+
+        }
     }
+
 
     li.win {
         background-color: var(--color-success);
@@ -1077,6 +997,10 @@ form {
     gap: var(--space-md);
     border-radius: var(--radius-md);
 
+    max-width: 576px;
+    margin: 0 auto;
+    margin-bottom: var(--space-lg);
+
     input,
     textarea {
         padding: var(--space-md);
@@ -1089,7 +1013,21 @@ form {
 }
 
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    &.container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-md);
+
+
+        img {
+            max-height: 60px;
+            max-width: fit-content;
+            margin: 0;
+            /* max-width: 40px; */
+        }
+    }
 }
