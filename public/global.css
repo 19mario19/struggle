@@ -712,7 +712,7 @@ nav {
         gap: var(--space-sm);
         padding: var(--space-sm) 0;
         flex-direction: column;
-
+        width: 100%;
 
         @media (max-width: 576px) {
             li {
@@ -958,37 +958,44 @@ nav {
 
 }
 
+.container {
+    width: 100%;
 
-ul.individual {
+    ul.individual {
 
-    li {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: var(--space-sm) var(--space-lg);
+        width: 100%;
 
-        align-items: center;
+        li {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-lg);
 
-        p {
-            margin: 0;
-        }
+            align-items: center;
+            width: 100%;
 
-        .state {
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: var(--f);
+            p {
+                margin: 0;
+            }
 
-        }
-
-        .created-at {
-            .date {}
-
-            .time {
+            .state {
+                text-transform: uppercase;
                 font-weight: bold;
-                font-size: var(--font-size-lg);
+                font-size: var(--f);
+
+            }
+
+            .created-at {
+                .date {}
+
+                .time {
+                    font-weight: bold;
+                    font-size: var(--font-size-lg);
+                }
             }
         }
     }
+
 }
 
 form {

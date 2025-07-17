@@ -69,63 +69,72 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let objects = [
     {
-      id: 1,
-      name: "Playing Video Games Excessively",
-      description: "Spending too much time gaming instead of being productive",
+      id: crypto.randomUUID(),
+      name: "I Know Where This Click Leads",
+      description:
+        "That moment I hover over the thing I shouldn’t. It starts with curiosity, ends in guilt.",
       history: [],
     },
     {
-      id: 2,
-      name: "Watching Erotic Movies",
-      description: "Consuming adult content and its impact on focus or mood",
+      id: crypto.randomUUID(),
+      name: "I Lied: It Wasn’t Just One Video",
+      description:
+        "I told myself it was a break. Two hours later, I’m drained and ashamed.",
       history: [],
     },
     {
-      id: 3,
-      name: "Negative Thoughts",
-      description: "Recurring pessimistic or harmful thoughts",
+      id: crypto.randomUUID(),
+      name: "I Let the Anger Win",
+      description:
+        "I kept feeding the fire, replaying old arguments, pretending it made me strong.",
       history: [],
     },
     {
-      id: 4,
-      name: "Mindless Social Media Scrolling",
-      description: "Losing time and attention to endless feeds",
+      id: crypto.randomUUID(),
+      name: "I Stayed in Bed to Avoid Life",
+      description:
+        "I wasn’t tired. I was scared of starting again. So I hid under the blanket of delay.",
       history: [],
     },
     {
-      id: 5,
-      name: "Junk Food Binges",
-      description: "Overeating unhealthy snacks or fast food",
+      id: crypto.randomUUID(),
+      name: "I Bought Something to Feel Less Empty",
+      description:
+        "It wasn’t about the object. It was about distraction. A shallow fix to a deeper wound.",
       history: [],
     },
     {
-      id: 6,
-      name: "Skipping Exercise",
-      description: "Avoiding physical activity despite intentions",
+      id: crypto.randomUUID(),
+      name: "I Entertained the Dark Thought",
+      description: "I gave it space. I let it breathe. And it grew fangs.",
       history: [],
     },
     {
-      id: 7,
-      name: "Procrastinating Important Tasks",
-      description: "Delaying work or responsibilities for distractions",
+      id: crypto.randomUUID(),
+      name: "I Broke the Promise to Myself—Again",
+      description:
+        "One more day where ‘later’ won. One less day where I grew stronger.",
       history: [],
     },
     {
-      id: 8,
-      name: "Arguing Online",
-      description: "Engaging in unproductive or heated internet debates",
+      id: crypto.randomUUID(),
+      name: "I Ate My Guilt",
+      description:
+        "I didn’t want food. I wanted silence. And I swallowed it with sugar.",
       history: [],
     },
     {
-      id: 9,
-      name: "Impulse Shopping",
-      description: "Buying things online or in stores without real need",
+      id: crypto.randomUUID(),
+      name: "I Picked the Scab Again",
+      description:
+        "It was healing. But I couldn’t help it—I scratched until it bled.",
       history: [],
     },
     {
-      id: 10,
-      name: "Staying Up Too Late",
-      description: "Sacrificing sleep for entertainment or distractions",
+      id: crypto.randomUUID(),
+      name: "I Chose the Scroll Over Sleep",
+      description:
+        "Midnight came. I stayed up. Not for joy—just to avoid the silence.",
       history: [],
     },
   ]
