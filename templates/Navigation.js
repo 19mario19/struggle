@@ -18,10 +18,10 @@ function Navigation() {
     </ul>
     <div class="controls">
         <button class="theme">
-          <img src="/media/icons/theme.svg" alt="theme toggle icon" />
+          <img src="/public/media/icons/theme.svg" alt="theme toggle icon" />
         </button>
         <button class="remove-all">
-          <img src="/media/icons/remove-all.svg" alt="remove all posts icon" />
+          <img src="/public/media/icons/remove-all.svg" alt="remove all posts icon" />
         </button>
       </div>
   </div>

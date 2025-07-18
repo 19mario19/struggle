@@ -1,32 +1,42 @@
 import path from "path"
 import dotenv from "dotenv"
 import express from "express"
-import { LayoutDir } from "./templates/Layout.js"
-import { Navigation } from "./templates/Navigation.js"
-import { Footer } from "./templates/Footer.js"
+import serverless from "serverless-http"
+import { LayoutDir } from "../../templates/Layout.js"
+import { Navigation } from "../../templates/Navigation.js"
+import { Footer } from "../../templates/Footer.js"
+
 dotenv.config()
 
-const PORT = 4000
-const app = express()
-
-app.use(express.json())
-
-const __rootFolder = process.cwd() // This will be the project root when running from there
+const __rootFolder = process.cwd() // This gets us the project root
 const publicDir = path.join(__rootFolder, "public")
 const pagesDir = path.join(publicDir, "pages")
-app.use(express.static(publicDir))
 
+const app = express()
+app.use(express.json())
+
+// Handle all routes since they're redirected to this function
 app.get("/", (req, res) => {
-  res.sendFile(path.join(pagesDir, "home", "index.html"))
+  try {
+    res.sendFile(path.join(pagesDir, "home", "index.html"))
+  } catch (error) {
+    console.warn(error)
+    return res.status(404).json({ message: "Page not found" })
+  }
 })
+
 app.get("/new", (req, res) => {
-  res.sendFile(path.join(pagesDir, "new", "index.html"))
+  try {
+    res.sendFile(path.join(pagesDir, "new", "index.html"))
+  } catch (error) {
+    console.warn(error)
+    return res.status(404).json({ message: "Page not found" })
+  }
 })
 
 // dynamic pages
 app.get("/posts/:id", async (req, res) => {
   const { id } = req.params
-
   const template = /*html*/ `
   <div class="container">
     <h3 id="title"></h3>
@@ -37,7 +47,6 @@ app.get("/posts/:id", async (req, res) => {
     <div class="list"></div>
   </div>
   `
-
   const layout = LayoutDir(
     {
       content: { nav: Navigation(), body: template, footer: Footer() },
@@ -45,7 +54,6 @@ app.get("/posts/:id", async (req, res) => {
     true,
     2,
   )
-
   try {
     return res.status(200).send(layout)
   } catch (error) {
@@ -54,7 +62,4 @@ app.get("/posts/:id", async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
-  console.log(new Date().toLocaleTimeString())
-  console.log(`Listening on port: ${PORT}`)
-})
+export const handler = serverless(app)

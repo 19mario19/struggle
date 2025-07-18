@@ -582,6 +582,9 @@ nav {
     display: flex;
     flex-direction: column;
     padding: 0;
+    padding: var(--space-xss) var(--space-md);
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     .nav-wrap {
         width: 100%;
@@ -630,11 +633,14 @@ nav {
             button {
                 margin: 0;
                 padding: var(--space-xs);
-                border-radius: var(--radius-md);
+                border-radius: var(--radius-full);
 
                 background-color: var(--color-neutral-light);
 
                 border: 3px solid var(--color-primary-background);
+/* 
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
 
                 img {
                     margin: 0;
@@ -962,6 +968,7 @@ nav {
     width: 100%;
 
     ul.individual {
+
 
         width: 100%;
 

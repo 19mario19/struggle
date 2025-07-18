@@ -375,7 +375,7 @@ function createParents(array, db) {
     deleteElement.style.display = "none"
 
     const dImg = document.createElement("img")
-    dImg.src = "/media/delete.svg"
+    dImg.src = "/public/media/delete.svg"
     deleteElement.append(dImg)
     // deleteElement.textContent = "remove."
 
@@ -463,9 +463,9 @@ function createParents(array, db) {
     for (let i = 0; i < Object.values(POWERS).length; i++) {
       const powerImg = document.createElement("img")
       if (i <= stars) {
-        powerImg.src = "/media/star-filled.svg"
+        powerImg.src = "/public/media/star-filled.svg"
       } else {
-        powerImg.src = "/media/star.svg"
+        powerImg.src = "/public/media/star.svg"
       }
       powerBot.append(powerImg)
     }
@@ -501,9 +501,9 @@ function createParents(array, db) {
     for (let i = 0; i < expArray.length; i++) {
       const expImg = document.createElement("img")
       if (i <= stars2) {
-        expImg.src = "/media/energy-filled.svg"
+        expImg.src = "/public/media/energy-filled.svg"
       } else {
-        expImg.src = "/media/energy.svg"
+        expImg.src = "/public/media/energy.svg"
       }
       expBot.append(expImg)
     }
